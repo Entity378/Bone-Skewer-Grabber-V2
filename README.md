@@ -101,7 +101,7 @@ The .exe file will appear in the same folder where all the other files are with 
 ```
 ### 7. Disclaimer:
 ```
-The original version of the grabber is not mine but by Smug264, this repo should be considered as a fork.
+The original version of the grabber is not mine but by Smug264 and this repo should be considered as a fork.
 This is the link to the original version by Smug264: https://github.com/Smug246/Luna-Grabber
 ```
 

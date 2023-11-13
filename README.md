@@ -106,16 +106,3 @@ This is the link to the original version by Smug264: https://github.com/Smug246/
 ```
 
 <hr  style="border-radius: 2%; margin-top: 60px; margin-bottom: 60px;"  noshade=""  size="20"  width="100%">
-
-### GUI
-
-<div align="center">
-    <img style="border-radius: 15px; display: block; margin-left: auto; margin-right: auto; margin-bottom:20px;" width="70%" src="https://raw.githubusercontent.com/Entity378/Bone-Skewer-Grabber-V2/tree/main/gui_images
-/68747470733a2f2f692e696d6775722e636f6d2f326a4e726743352e706e67.png"></img>
-    <img style="border-radius: 15px; display: block; margin-left: auto; margin-right: auto; margin-bottom:20px;" width="70%" src="https://raw.githubusercontent.com/Entity378/Bone-Skewer-Grabber-V2/tree/main/gui_images
-/68747470733a2f2f692e696d6775722e636f6d2f633163556d5a462e706e67.png"></img> 
-    <img style="border-radius: 15px; display: block; margin-left: auto; margin-right: auto; margin-bottom:20px;" width="70%" src="https://raw.githubusercontent.com/Entity378/Entity378/Bone-Skewer-Grabber-V2/tree/main/gui_images
-/68747470733a2f2f692e696d6775726e636f6d2f34444e4369414a2e706e67.png"></img>  
-    <img style="border-radius: 15px; display: block; margin-left: auto; margin-right: auto; margin-bottom:20px;" width="70%" src="https://raw.githubusercontent.com/Entity378/Bone-Skewer-Grabber-V2/tree/main/gui_images
-/68747470733a2f2f692e696d6775722e636f6d2f733566344856732e706e67.png"></img>
-</div>

